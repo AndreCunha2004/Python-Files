@@ -1,0 +1,36 @@
+### Exercício 'Average 1' - Beecrowd ###
+# Read two floating points' values of double precision A and B, corresponding to two student's grades. 
+# After this, calculate the student's average, considering that grade A has weight 3.5 and B has weight 7.5. 
+# Each grade can be from zero to ten, always with one digit after the decimal point. 
+# Don’t forget to print the end of line after the result, otherwise you will receive “Presentation Error”. 
+# Don’t forget the space before and after the equal sign.
+
+print("==================================\n")
+print("Cadastrando os alunos e suas notas")
+print("==================================\n")
+
+aluno = {} # Declarando vetor de alunos
+nota_1 = {} # Declarando vetor de notas-1
+nota_2 = {} # Declarando vetor de notas-2
+
+for i in range(2):
+  aluno[i] = input("Digite o nome do aluno: ")
+
+print("\n")
+
+for i in range(2):
+  nota_1[i] = float(input("Digite a nota-1 de " + aluno[i] + ":"))
+  nota_2[i] = float(input("Digite a nota-2 de " + aluno[i] + ":"))
+
+print("\n")
+
+#**************************************
+# Função para calcular a média
+#**************************************
+def calcular_media(nota_1,nota_2):
+  return ( (nota_1 * 3.5 + nota_2 * 7.5) / (3.5 + 7.5) )
+
+for i in range(2):
+  print("Media de", aluno[i], "=", calcular_media(nota_1[i], nota_2[i]))
+
+print("\nFIM DO PROGRAMA!")
