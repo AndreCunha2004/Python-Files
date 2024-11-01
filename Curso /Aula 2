@@ -1,0 +1,77 @@
+# Aula 2 - Trabalhando com listas, comandos wihle e for.
+
+# ----------------- Função para adicionar item à uma lista -------------------------
+def append_list(lista):
+    print('\n*** Adicione itens à sua lista! ***\n'
+          '(\'sair\' para interromper)\n')
+    while True:
+        item = str(input('O que está faltando? '))
+
+        # Verifica se o usuário se manteve no loop
+        if item.lower() == 'sair':
+            print('\n')
+            break
+        else:
+            lista.append(item)  # Preenche a nova lista
+
+    return lista
+
+# ----------------- Função escolher e adicionar item às lista -------------------------
+def choose_list(lista_1, lista_2):
+    while True:
+        option = int(input('Em qual lista deseja adicionar algo?\n'
+                           '1.Lista 1\n'
+                           '2.Lista 2\n'
+                           'Escolha: '))
+
+        if option == 1:
+            append_list(lista_1)
+            option = str(input('Deseja adicionar algo na outra lista?(sim/não) '))
+            if option.lower() == 'sim':
+                append_list(lista_2)
+            else:
+                print('\n')
+            break
+        elif option == 2:
+            append_list(lista_2)
+            option = str(input('Deseja adicionar algo na outra lista?(sim/não) '))
+            if option.lower() == 'sim':
+                append_list(lista_1)
+            else:
+                print('\n')
+            break
+        else:
+            print("Opção inválida! Escolha 1 ou 2.")
+
+# ----------------- Função para imprimir interface -------------------------
+def interface(lista_1,lista_2):
+    print('\n*** Verifique suas listas disponveis! ***')
+    print('*** LISTA 1 ***')
+    show_list(lista_1)
+    print('*** LISTA 2 ***')
+    show_list(lista_2)
+
+# ----------------- Função para imprime a lista -------------------------
+def show_list(lista):
+    if lista:
+        for item in lista:
+            print(f'- {item}')
+    else:
+        print('Lista vazia')
+    print('\n')
+
+
+# 1.Declarando as listas
+lista_1 = ['Maçã', 'Abacaxi']
+lista_2 = ['Cerveja', 'Biscoito']
+
+# 2.Interface
+interface(lista_1,lista_2)
+
+# 3. Adiciona mais itens à lista
+choose_list(lista_1,lista_2)
+
+# 4.Imprime as lista completa (unida)
+print('*** Lista de Completa ***')
+lista_completa = sorted(list(set(lista_1+lista_2)))
+show_list(lista_completa)
